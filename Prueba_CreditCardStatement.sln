@@ -1,0 +1,109 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E4BD740F-258E-4F78-B83D-C76204393FCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{9BFD0511-96A9-4357-8629-B2C7C4C73D1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2E13C0DD-2691-4F66-B076-4D92B88723BA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{ECF5DE78-0C5B-4A7A-B41D-74933E36291B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{EC5C2999-95AA-42E1-A0D5-ABC9B5BF4A27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F9FC7527-7864-4FAF-B0B1-64051DC3A6EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{EF3514E5-D3B2-41B2-8553-57ECD020DBB1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.Api", "Backend\src\CreditCardStatement.Api\CreditCardStatement.Api.csproj", "{F41D26B6-6AEA-4E1A-9B3B-87842692D174}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.Domain", "Backend\src\CreditCardStatement.Domain\CreditCardStatement.Domain.csproj", "{3A00DFBF-94C0-4975-B196-CCCD4AFE827A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.Application", "Backend\src\CreditCardStatement.Application\CreditCardStatement.Application.csproj", "{8764ED1A-6D9C-4EEE-800A-E525134146C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.Persistence", "Backend\src\CreditCardStatement.Persistence\CreditCardStatement.Persistence.csproj", "{D5FF5995-B59A-444C-80E8-009C5A1969DB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.External", "Backend\src\CreditCardStatement.External\CreditCardStatement.External.csproj", "{F1D352D1-650C-4BB9-9E9D-C9C61A81F47C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.Common", "Backend\src\CreditCardStatement.Common\CreditCardStatement.Common.csproj", "{70426A2E-DAC6-40EC-AFCB-99BBD3B16D94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CreditCardStatement.FrontMVC", "Frontend\CreditCardStatement.FrontMVC\CreditCardStatement.FrontMVC.csproj", "{268091F4-1B58-4C7A-BD87-2A4EDB5F6735}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "db_scripts", "db_scripts", "{172D2935-29A7-4A54-A7A6-E35FE0B8AD08}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Scripts\01 - CREATE DATABASE CreditCardDB.sql = ..\..\Scripts\01 - CREATE DATABASE CreditCardDB.sql
+		..\..\Scripts\02 - CREATE TABLE Customer.sql = ..\..\Scripts\02 - CREATE TABLE Customer.sql
+		..\..\Scripts\03 - CREATE TABLE CreditCardInfo.sql = ..\..\Scripts\03 - CREATE TABLE CreditCardInfo.sql
+		..\..\Scripts\04 - CREATE TABLE TransactionType.sql = ..\..\Scripts\04 - CREATE TABLE TransactionType.sql
+		..\..\Scripts\05 - CREATE TABLE CreditCardTransaction.sql = ..\..\Scripts\05 - CREATE TABLE CreditCardTransaction.sql
+		..\..\Scripts\06 - INSERTS TransactionType.sql = ..\..\Scripts\06 - INSERTS TransactionType.sql
+		..\..\Scripts\07 - SP_ADD_TRANSACTION.sql = ..\..\Scripts\07 - SP_ADD_TRANSACTION.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postman_collections", "postman_collections", "{5DE31E8E-7192-48F6-A707-5206EFA06A79}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Users\ronal\Downloads\azure.postman_environment.json = ..\..\..\Users\ronal\Downloads\azure.postman_environment.json
+		..\..\..\Users\ronal\Downloads\CreditCardStatement.postman_collection.json = ..\..\..\Users\ronal\Downloads\CreditCardStatement.postman_collection.json
+		..\..\..\Users\ronal\Downloads\local.postman_environment.json = ..\..\..\Users\ronal\Downloads\local.postman_environment.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F41D26B6-6AEA-4E1A-9B3B-87842692D174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41D26B6-6AEA-4E1A-9B3B-87842692D174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41D26B6-6AEA-4E1A-9B3B-87842692D174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41D26B6-6AEA-4E1A-9B3B-87842692D174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A00DFBF-94C0-4975-B196-CCCD4AFE827A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A00DFBF-94C0-4975-B196-CCCD4AFE827A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A00DFBF-94C0-4975-B196-CCCD4AFE827A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A00DFBF-94C0-4975-B196-CCCD4AFE827A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8764ED1A-6D9C-4EEE-800A-E525134146C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8764ED1A-6D9C-4EEE-800A-E525134146C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8764ED1A-6D9C-4EEE-800A-E525134146C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8764ED1A-6D9C-4EEE-800A-E525134146C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5FF5995-B59A-444C-80E8-009C5A1969DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5FF5995-B59A-444C-80E8-009C5A1969DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5FF5995-B59A-444C-80E8-009C5A1969DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5FF5995-B59A-444C-80E8-009C5A1969DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1D352D1-650C-4BB9-9E9D-C9C61A81F47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1D352D1-650C-4BB9-9E9D-C9C61A81F47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1D352D1-650C-4BB9-9E9D-C9C61A81F47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1D352D1-650C-4BB9-9E9D-C9C61A81F47C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70426A2E-DAC6-40EC-AFCB-99BBD3B16D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70426A2E-DAC6-40EC-AFCB-99BBD3B16D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70426A2E-DAC6-40EC-AFCB-99BBD3B16D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70426A2E-DAC6-40EC-AFCB-99BBD3B16D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268091F4-1B58-4C7A-BD87-2A4EDB5F6735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268091F4-1B58-4C7A-BD87-2A4EDB5F6735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268091F4-1B58-4C7A-BD87-2A4EDB5F6735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268091F4-1B58-4C7A-BD87-2A4EDB5F6735}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2E13C0DD-2691-4F66-B076-4D92B88723BA} = {E4BD740F-258E-4F78-B83D-C76204393FCE}
+		{ECF5DE78-0C5B-4A7A-B41D-74933E36291B} = {2E13C0DD-2691-4F66-B076-4D92B88723BA}
+		{EC5C2999-95AA-42E1-A0D5-ABC9B5BF4A27} = {2E13C0DD-2691-4F66-B076-4D92B88723BA}
+		{F9FC7527-7864-4FAF-B0B1-64051DC3A6EF} = {2E13C0DD-2691-4F66-B076-4D92B88723BA}
+		{EF3514E5-D3B2-41B2-8553-57ECD020DBB1} = {2E13C0DD-2691-4F66-B076-4D92B88723BA}
+		{F41D26B6-6AEA-4E1A-9B3B-87842692D174} = {ECF5DE78-0C5B-4A7A-B41D-74933E36291B}
+		{3A00DFBF-94C0-4975-B196-CCCD4AFE827A} = {EC5C2999-95AA-42E1-A0D5-ABC9B5BF4A27}
+		{8764ED1A-6D9C-4EEE-800A-E525134146C5} = {EC5C2999-95AA-42E1-A0D5-ABC9B5BF4A27}
+		{D5FF5995-B59A-444C-80E8-009C5A1969DB} = {F9FC7527-7864-4FAF-B0B1-64051DC3A6EF}
+		{F1D352D1-650C-4BB9-9E9D-C9C61A81F47C} = {F9FC7527-7864-4FAF-B0B1-64051DC3A6EF}
+		{70426A2E-DAC6-40EC-AFCB-99BBD3B16D94} = {EF3514E5-D3B2-41B2-8553-57ECD020DBB1}
+		{268091F4-1B58-4C7A-BD87-2A4EDB5F6735} = {9BFD0511-96A9-4357-8629-B2C7C4C73D1E}
+		{172D2935-29A7-4A54-A7A6-E35FE0B8AD08} = {E4BD740F-258E-4F78-B83D-C76204393FCE}
+		{5DE31E8E-7192-48F6-A707-5206EFA06A79} = {E4BD740F-258E-4F78-B83D-C76204393FCE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D92760A-9467-4838-9CF4-A227E967A0F3}
+	EndGlobalSection
+EndGlobal

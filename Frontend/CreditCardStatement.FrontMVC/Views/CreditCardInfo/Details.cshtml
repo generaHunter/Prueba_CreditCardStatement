@@ -1,0 +1,230 @@
+﻿@using Newtonsoft.Json
+@model CreditCardStatement.FrontMVC.Models.Details.CommonDetailViewModel
+
+@{
+    ViewData["Title"] = "Detalles de la Tarjeta de Crédito";
+}
+
+<!-- Button to go back to the Customer view -->
+<p>
+    <a asp-controller="CreditCardInfo" asp-action="Index" asp-route-customerId="@Model.CreditCardInfo.CustomerId" class="btn btn-secondary">Regresar</a>
+</p>
+
+<div class="card mt-4">
+    <div class="card-header">
+        <h2>Detalles de la Tarjeta de Crédito</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Número de Tarjeta: @Model.CreditCardInfo.CardNumber</h5>
+        <p class="card-text"><strong>Límite de Crédito:</strong> @Model.CreditCardInfo.CreditLimit.ToString("C")</p>
+        <p class="card-text"><strong>Saldo Actual:</strong> @Model.CreditCardInfo.CurrentBalance.ToString("C")</p>
+        <p class="card-text"><strong>Saldo Disponible:</strong> @Model.CreditCardInfo.AvailableBalance.ToString("C")</p>
+        <p class="card-text"><strong>Tasa de Interés Configurable:</strong> @Model.CreditCardInfo.ConfigurableInterestRate.ToString("N2") %</p>
+        <p class="card-text"><strong>Porcentaje de Balance Mínimo Configurable:</strong> @Model.CreditCardInfo.ConfigurableMinimumBalancePercentage.ToString("N2") %</p>
+        <p class="card-text"><strong>Interés Bonificable:</strong> @Model.CreditCardInfo.BonifiableInterest.ToString("C")</p>
+        <p class="card-text"><strong>Cuota Mínima:</strong> @Model.CreditCardInfo.MinimumFee.ToString("C")</p>
+        <p class="card-text"><strong>Pago con Interés:</strong> @Model.CreditCardInfo.PaymentWithInterest.ToString("C")</p>
+    </div>
+</div>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <p class="mt-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tranfererModal">
+                Añadir Transaferencia
+            </button>
+        </p>
+    </div>
+    <div>
+
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+            </symbol>
+            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+            </symbol>
+            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </symbol>
+        </svg>
+
+        @if (TempData["SuccessMessageCreateT"] != null)
+        {
+            <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+                <div>
+                    @TempData["SuccessMessageCreateT"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            </div>
+        }
+        @if (TempData["ErrorMessageCreateT"] != null)
+        {
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                <div>
+                    @TempData["ErrorMessageCreateT"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        }
+
+        <h2>Transacciones</h2>
+
+        <div class="row">
+            <div class="col-md-3">
+                <label for="transactionTypeFilter">Tipo de Transaccion</label>
+                <select id="transactionTypeFilter">
+                    <option value="">Todas</option>
+                    @foreach (var type in Model.TransactionTypes)
+                    {
+                        <option value="@type.Value">@type.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="startDate">Start Date</label>
+                <input type="text" id="startDate" class="form-control" placeholder="DD-MM-YYYY">
+            </div>
+            <div class="col-md-3">
+                <label for="endDate">End Date</label>
+                <input type="text" id="endDate" class="form-control" placeholder="DD-MM-YYYY">
+            </div>
+            <div class="col-md-3">
+                <button id="filterBtn" class="btn btn-primary" style="margin-top: 24px;">Filtrar</button>
+                <button id="clearBtn" class="btn btn-secondary" style="margin-top: 24px;">Limpiar Filtros</button>
+            </div>
+        </div>
+
+        <table id="transactionTable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th hidden>Id Transaccion</th>
+                    <th>Tipo de Transaccion</th>
+                    <th>Fecha de Transaccion</th>
+                    <th>Monto</th>
+                    <th>Descripcion de Transaccion</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div class="modal fade" id="tranfererModal" tabindex="-1" aria-labelledby="tranfererModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tranfererModalLabel">Añadir Tarjeta de Crédito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="transactionForm" asp-action="CreateTransaction">
+                        <div class="form-group">
+                            <label for="transactionTypeId">Tipo De Transaccion</label>
+                            <select class="form-control" id="transactionTypeId" name="TransactionTypeId" asp-items="Model.TransactionTypes"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transactionDate">Transaction Date</label>
+                            <input type="datetime-local" class="form-control" id="transactionDate" name="TransactionDate" placeholder="YYYY-MM-DD">
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" class="form-control" id="amount" name="Amount" step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" name="Description">
+                        </div>
+                        <input type="hidden" id="customerId" name="CustomerId" value="@Model.CreditCardInfo.CustomerId">
+                        <input type="hidden" id="customerId" name="CreditCardInfoId" value="@Model.CreditCardInfo.CreditCardInfoId">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#startDate, #endDate').datepicker({
+                format: 'dd-mm-yyyy',
+                autoclose: true
+            });
+
+
+            var table = $('#transactionTable').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ],
+                columns: [
+                    { data: 'TransactionTypeId', visible: false },
+                    { data: 'TransactionType.TransactionTypeName' },
+                    {
+                        data: 'TransactionDate',
+                        render: function (data, type, row) {
+                            if (data) {
+                                return moment(data).format('DD/MM/YYYY hh:mm A');
+                            }
+                            return data;
+                        }
+                    },
+                    {
+                        data: 'Amount',
+                        render: $.fn.dataTable.render.number(',', '.', 2, '$')
+                    },
+                    { data: 'Description' }
+                ]
+
+            });
+
+            var data = @Html.Raw(JsonConvert.SerializeObject(Model.CreditCardTransactions));
+            console.log('data', data);
+            table.rows.add(data).draw();
+
+            $('#filterBtn').click(function () {
+                var type = $('#transactionTypeFilter').val();
+                var startDate = $('#startDate').val();
+                var endDate = $('#endDate').val();
+
+                $.fn.dataTable.ext.search.push(
+                    function (settings, data, dataIndex) {
+                        var transactionType = data[0];
+                        var transactionDate = moment(data[2], 'DD/MM/YYYY hh:mm A').startOf('day');
+
+                        var startMoment = moment(startDate, 'DD/MM/YYYY').startOf('day');
+                        var endMoment = moment(endDate, 'DD/MM/YYYY').endOf('day');
+
+                        if ((type === '' || transactionType === type) &&
+                            (startDate === '' || transactionDate.isSameOrAfter(startMoment)) &&
+                            (endDate === '' || transactionDate.isSameOrBefore(endMoment))) {
+                            return true;
+                        }
+                        return false;
+                    }
+                );
+
+                table.draw();
+                $.fn.dataTable.ext.search.pop();
+            });
+
+
+            $('#clearBtn').click(function () {
+                $('#transactionTypeFilter').val('');
+                $('#startDate').val('');
+                $('#endDate').val('');
+                table.search('').columns().search('').draw();
+            });
+        });
+    </script>
+}
