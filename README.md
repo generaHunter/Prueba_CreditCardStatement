@@ -30,10 +30,12 @@ Este repositorio contiene la solución completa para una aplicación de estado d
 
 - **API**:
   - API RESTful construida con ASP.NET Web API, utilizando **.NET 6**.
+  - **Clean Architecture**: Implementación basada en los principios de Arquitectura Limpia, asegurando una separación clara de responsabilidades y facilitando la mantenibilidad.
   - Implementa patrones de **CQRS**, **AutoMapper**, **FluentValidation** y **UnitOfWork** para un código robusto y mantenible.
   - **Manejo global de excepciones** usando `GlobalExceptionMiddleware` y `ExceptionManager` para respuestas de error consistentes.
   - **Health checks** para monitorear el estado de la API.
   - Documentación con **Swagger** para facilitar la exploración y prueba de los endpoints de la API.
+  - **Procesos Almacenados**: Interacción con SQL Server utilizando procedimientos almacenados (PL/SQL) para mejorar la eficiencia y seguridad en la ejecución de consultas.
 
 - **Frontend MVC**:
   - Interfaz fácil de usar con ASP.NET MVC, **vistas Razor** y **jQuery**.
