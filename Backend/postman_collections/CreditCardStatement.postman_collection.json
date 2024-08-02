@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "42a66d9d-8ef4-40b8-bf78-601899f71121",
+		"name": "CreditCardStatement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18943300"
+	},
+	"item": [
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\": \"Juan Perez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}customer/create",
+							"host": [
+								"{{api}}customer"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllCustomers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}customer/getAllCustomers",
+							"host": [
+								"{{api}}customer"
+							],
+							"path": [
+								"getAllCustomers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCustomerById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}customer/getCustomerById/1",
+							"host": [
+								"{{api}}customer"
+							],
+							"path": [
+								"getCustomerById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TransactionType",
+			"item": [
+				{
+					"name": "GetAllTransactionsType",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}transactionType/GetAllTransactionsType",
+							"host": [
+								"{{api}}transactionType"
+							],
+							"path": [
+								"GetAllTransactionsType"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreditCardTransaction",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"creditCardInfoId\": 1,\r\n    \"transactionTypeId\": 1,\r\n    \"amount\": 10,\r\n    \"transactionDate\": \"2024-07-29\",\r\n    \"description\": \"Compra articulo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}creditCardTransaction/create",
+							"host": [
+								"{{api}}creditCardTransaction"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCreditCardTransactionsByCardInfoId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"creditCardInfoId\": 1,\r\n    \"transactionTypeId\": 1,\r\n    \"amount\": 10,\r\n    \"transactionDate\": \"2024-07-29\",\r\n    \"description\": \"Compra articulo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}creditCardTransaction/getCreditCardTransactionsByCardInfoId/1",
+							"host": [
+								"{{api}}creditCardTransaction"
+							],
+							"path": [
+								"getCreditCardTransactionsByCardInfoId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CreditCardInfo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerId\": 2,\r\n    \"CardNumber\": \"4852-3212-9971-3015\",\r\n    \"CreditLimit\": 25,\r\n    \"CurrentBalance\": 0,\r\n    \"AvailableBalance\": 25,\r\n    \"ConfigurableInterestRate\": 25,\r\n    \"ConfigurableMinimumBalancePercentage\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}creditCardInfo/create",
+							"host": [
+								"{{api}}creditCardInfo"
+							],
+							"path": [
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCreditCardInfoByCustomerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}creditCardInfo/getCreditCardInfoByCustomerId/1",
+							"host": [
+								"{{api}}creditCardInfo"
+							],
+							"path": [
+								"getCreditCardInfoByCustomerId",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCreditCardInfoById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}creditCardInfo/getCreditCardInfoById/1",
+							"host": [
+								"{{api}}creditCardInfo"
+							],
+							"path": [
+								"getCreditCardInfoById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "validateCreditCardNumber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}creditCardInfo/validateCreditCardNumber/3689-8741-1225-6630",
+							"host": [
+								"{{api}}creditCardInfo"
+							],
+							"path": [
+								"validateCreditCardNumber",
+								"3689-8741-1225-6630"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "_health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_health}}_health",
+							"host": [
+								"{{api_health}}_health"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
